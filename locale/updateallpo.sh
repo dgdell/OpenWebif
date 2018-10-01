@@ -31,13 +31,13 @@ IFS=" "
 for lang in "${languages[@]}" ; do
 	#if [ -f $lang.po ]; then 
 	#	printf "Updating existing translation file %s.po\n" $lang
-	#	msgmerge --backup=none --no-wrap -s -U $lang.po $Plugin.pot && touch $lang.po
-	#	msgattrib --no-wrap --no-obsolete $lang.po -o $lang.po
-	#	msgfmt -o $lang.mo $lang.po
-	#else
-		printf "New file created: %s.po, please add it to github before commit\n" $lang
-		msginit -l $lang.po -o $lang.po -i $Plugin.pot --no-translator
+		msgmerge --backup=none --no-wrap -s -U $lang.po $Plugin.pot && touch $lang.po
+		msgattrib --no-wrap --no-obsolete $lang.po -o $lang.po
 		msgfmt -o $lang.mo $lang.po
+	#else
+	#	printf "New file created: %s.po, please add it to github before commit\n" $lang
+	#	msginit -l $lang.po -o $lang.po -i $Plugin.pot --no-translator
+	#	msgfmt -o $lang.mo $lang.po
 	#fi
 done
 rm $Plugin-py.pot $Plugin-xml.pot
